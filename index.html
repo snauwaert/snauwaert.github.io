@@ -12,21 +12,12 @@
     </div>
     <div id="drinkScreen" class="screen" style="display:none;">
         <h1>Select Drink for <span id="currentPerson"></span></h1>
-        <button onclick="addDrink('Beer', 5)">
-            <div class="drink-name">Beer</div>
-            <div class="drink-price">€5</div>
-        </button>
-        <button onclick="addDrink('Wine', 7)">
-            <div class="drink-name">Wine</div>
-            <div class="drink-price">€7</div>
-        </button>
-        <button onclick="addDrink('Cocktail', 10)">
-            <div class="drink-name">Cocktail</div>
-            <div class="drink-price">€10</div>
-        </button>
+        <div id="drinksContainer">
+            <!-- Drink buttons will be added here by JavaScript -->
+        </div>
+        <button onclick="goBack()">Back</button>
         <h2>Current Tab: <span id="currentTab"></span></h2>
         <button onclick="settleUp()">Reken Af</button>
-        <button onclick="goBack()">Back</button>
         <button onclick="undoLastAction()">Undo Last Action</button>
     </div>
     <script src="app.js"></script>

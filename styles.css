@@ -29,11 +29,11 @@ button {
     border: 1px solid white; /* Visible borders can help visualize button dimensions */
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, opacity 0.3s;
 }
 
 button:hover {
-    background-color: #555; /* A darker background on hover */
+    opacity: 0.8; /* Lighten the button on hover */
 }
 
 .drink-name {
@@ -46,27 +46,24 @@ button:hover {
     color: #ccc;
 }
 
-/* Different colors for specific button types */
-#personScreen button {
-    background-color: #556B2F;
-}
-
-#drinkScreen button:nth-child(1) { /* Beer button */
-    background-color: #B22222;
-}
-
-#drinkScreen button:nth-child(2) { /* Wine button */
-    background-color: #8B008B;
-}
-
-#drinkScreen button:nth-child(3) { /* Cocktail button */
-    background-color: #FF8C00;
-}
-
-#drinkScreen button:nth-child(4) { /* Back button */
-    background-color: #4682B4;
-}
-
-#drinkScreen button:last-child { /* Undo button */
-    background-color: #2E8B57;
-}
+/* Color classes for dynamic application */
+.color-1 { background-color: #FF6347; } /* Tomato */
+.color-2 { background-color: #4682B4; } /* SteelBlue */
+.color-3 { background-color: #32CD32; } /* LimeGreen */
+.color-4 { background-color: #FFD700; } /* Gold */
+.color-5 { background-color: #6A5ACD; } /* SlateBlue */
+.color-6 { background-color: #FF4500; } /* OrangeRed */
+.color-7 { background-color: #9ACD32; } /* YellowGreen */
+.color-8 { background-color: #40E0D0; } /* Turquoise */
+.color-9 { background-color: #EE82EE; } /* Violet */
+.color-10 { background-color: #DA70D6; } /* Orchid */
+.color-11 { background-color: #00CED1; } /* DarkTurquoise */
+.color-12 { background-color: #C71585; } /* MediumVioletRed */
+.color-13 { background-color: #FFB6C1; } /* LightPink */
+.color-14 { background-color: #BC8F8F; } /* RosyBrown */
+.color-15 { background-color: #F08080; } /* LightCoral */
+.color-16 { background-color: #D2B48C; } /* Tan */
+.color-17 { background-color: #008080; } /* Teal */
+.color-18 { background-color: #FF6347; } /* Repeated Tomato */
+.color-19 { background-color: #40E0D0; } /* Repeated Turquoise */
+.color-20 { background-color: #EE82EE; } /* Repeated Violet */
