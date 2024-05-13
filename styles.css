@@ -9,7 +9,6 @@ body, html {
     height: 100%;
 }
 
-
 .top-bar {
     position: absolute;
     top: 0;
@@ -30,18 +29,40 @@ body, html {
     gap: 10px;
 }
 
+.button2-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
 button {
     margin: 5px;
     padding: 10px 20px;
     font-size: 16px; /* Optimal for mobile taps */
     background: none;
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+button2 {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px; /* Optimal for mobile taps */
+    background: none;
     border: 1px solid white;
-    color: white;
+    color: rgb(255, 255, 255);
     cursor: pointer;
     transition: background-color 0.3s, opacity 0.3s;
 }
 
 button:hover {
+    opacity: 0.8;
+}
+
+button2:hover {
     opacity: 0.8;
 }
 
@@ -53,12 +74,18 @@ button:hover {
     min-height: 100vh;
     text-align: center;
     padding: 20px;
-    padding-top: 60px; /* Adjust padding to not overlap with the top bar */
+    padding-top: 20px; /* Adjust padding to not overlap with the top bar */
 }
 
 /* Responsive adjustments */
 @media (min-width: 600px) {
     .button-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .button2-container {
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
@@ -81,7 +108,16 @@ button:hover {
     #resetAllTabs {
         padding: 10px 20px;
         font-size: 16px;
-        background-color: #FF6347; /* Tomato color for visibility */
+        background-color: #fc2600; /* Tomato color for visibility */
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    #settleUp{
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #fc2600; /* Tomato color for visibility */
         color: white;
         border: none;
         cursor: pointer;
@@ -90,6 +126,11 @@ button:hover {
 
 @media (max-width: 599px) {
     button {
+        font-size: 14px; /* Slightly smaller to fit more content */
+        padding: 8px 15px;
+    }
+
+    button2 {
         font-size: 14px; /* Slightly smaller to fit more content */
         padding: 8px 15px;
     }
@@ -104,8 +145,13 @@ button:hover {
     }
 
     #resetAllTabs {
-        width: 100%; /* Full width button for easier access on mobile */
+        width: 80%; /* Full width button for easier access on mobile */
         margin-top: 10px;
+    }
+
+    #settleUp{width: 80%; /* Full width button for easier access on mobile */
+        margin-top: 10px;
+
     }
 }
 
@@ -117,7 +163,7 @@ button:hover {
 
 .drink-price {
     font-size: 12px;
-    color: whitesmoke;
+    color: rgb(51, 51, 51);
 }
 
 .total-due {
@@ -126,36 +172,32 @@ button:hover {
     color: #FFD700; /* Gold color for emphasis */
 }
 
-#resetAllTabs {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #FF6347; /* Tomato color for visibility */
-    color: white;
-    border: none;
-    cursor: pointer;
+.unsettled-tab {
+    border: 4px solid red;
 }
 
 
 
+
 /* Color classes for dynamic application */
-.color-1 { background-color: #FF6347; } /* Tomato */
-.color-2 { background-color: #4682B4; } /* SteelBlue */
-.color-3 { background-color: #32CD32; } /* LimeGreen */
-.color-4 { background-color: #FFD700; } /* Gold */
-.color-5 { background-color: #6A5ACD; } /* SlateBlue */
-.color-6 { background-color: #FF4500; } /* OrangeRed */
-.color-7 { background-color: #9ACD32; } /* YellowGreen */
-.color-8 { background-color: #40E0D0; } /* Turquoise */
-.color-9 { background-color: #EE82EE; } /* Violet */
-.color-10 { background-color: #DA70D6; } /* Orchid */
-.color-11 { background-color: #00CED1; } /* DarkTurquoise */
-.color-12 { background-color: #C71585; } /* MediumVioletRed */
-.color-13 { background-color: #FFB6C1; } /* LightPink */
-.color-14 { background-color: #BC8F8F; } /* RosyBrown */
-.color-15 { background-color: #F08080; } /* LightCoral */
-.color-16 { background-color: #D2B48C; } /* Tan */
-.color-17 { background-color: #008080; } /* Teal */
-.color-18 { background-color: #FF6347; } /* Repeated Tomato */
-.color-19 { background-color: #40E0D0; } /* Repeated Turquoise */
-.color-20 { background-color: #EE82EE; } /* Repeated Violet */
+.color-1 { background-color: #f6a6b2; } /* Pastel Red */
+.color-2 { background-color: #add8e6; } /* Light Blue */
+.color-3 { background-color: #b7e4c7; } /* Mint Cream */
+.color-4 { background-color: #fdfd96; } /* Pastel Yellow */
+.color-5 { background-color: #b3a4e5; } /* Pastel Purple */
+.color-6 { background-color: #ffb347; } /* Pastel Orange */
+.color-7 { background-color: #d7ebba; } /* Pastel Green */
+.color-8 { background-color: #a2d5f2; } /* Pastel Cyan */
+.color-9 { background-color: #fbb1bd; } /* Soft Pink */
+.color-10 { background-color: #cbf3d2; } /* Tea Green */
+.color-11 { background-color: #bde0fe; } /* Baby Blue */
+.color-12 { background-color: #ffc8dd; } /* Pink Lavender */
+.color-13 { background-color: #f4acb7; } /* Pink Flamingo */
+.color-14 { background-color: #c5dedd; } /* Powder Blue */
+.color-15 { background-color: #e0bbd3; } /* Soft Violet */
+.color-16 { background-color: #f9cb9c; } /* Melon */
+.color-17 { background-color: #cfcfc4; } /* Pastel Gray */
+.color-18 { background-color: #d6eadf; } /* Magic Mint */
+.color-19 { background-color: #f7d9c4; } /* Peach */
+.color-20 { background-color: #e0c3fc; } /* Pastel Lavender */
+

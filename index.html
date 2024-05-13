@@ -2,27 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bar Tab Tracker</title>
+    <title>Bar rekeningen </title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="topBar" class="top-bar">
-        <button id="backButton" onclick="goBack()" style="display: none;">Back</button>
-        <button id="settleUpButton" onclick="settleUp()" style="display: none;">Settle Up</button>
-        <button onclick="undoLastAction()">Undo Last Action</button>
+        <button2 id="backButton" onclick="goBack()" style="display: none;">Terug</button2>
+        <button2 onclick="undoLastAction()">Laatste actie ongedaan maken</button2>
     </div>
     <div id="personScreen" class="screen">
-        <h1>Select Person</h1>
-        <div id="totalDue" class="total-due">Total Due: €0</div>
+        <h1>Selecteer persoon </h1>
+        <div id="totalDue" class="total-due">Totaal verschuldigd €0</div>
         <div id="peopleContainer" class="button-container"></div>
-        <button id="resetAllTabs" onclick="resetAllTabs()">Reset All Tabs</button>
+        <button id="resetAllTabs" onclick="resetAllTabs()">Reset alle rekeningen</button>
     </div>
         
     </div>
     <div id="drinkScreen" class="screen" style="display:none;">
-        <h1>Select Drink for <span id="currentPerson"></span></h1>
+        <h1>Selecteer drank voor <span id="currentPerson"></span></h1>
         <div id="drinksContainer" class="button-container"></div>
-        <h2>Current Tab: <span id="currentTab"></span></h2>
+        <h2>Huidige rekening: <span id="currentTab"></span></h2>
+        <button id="settleUp" onclick="settleUp()">Reken af</button>
     </div>
     <script src="app.js"></script>
 </body>
