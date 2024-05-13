@@ -6,20 +6,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="topBar" class="top-bar">
+        <button id="backButton" onclick="goBack()" style="display: none;">Back</button>
+        <button id="settleUpButton" onclick="settleUp()" style="display: none;">Settle Up</button>
+        <button onclick="undoLastAction()">Undo Last Action</button>
+    </div>
     <div id="personScreen" class="screen">
         <h1>Select Person</h1>
-        <!-- Buttons for each person will be added here by JavaScript -->
+        <div id="totalDue" class="total-due">Total Due: €0</div>
+        <div id="peopleContainer" class="button-container"></div>
+        <button id="resetAllTabs" onclick="resetAllTabs()">Reset All Tabs</button>
+    </div>
+        
     </div>
     <div id="drinkScreen" class="screen" style="display:none;">
         <h1>Select Drink for <span id="currentPerson"></span></h1>
-        <div id="drinksContainer">
-            <!-- Drink buttons will be added here by JavaScript -->
-        </div>
-        <button onclick="goBack()">Back</button>
+        <div id="drinksContainer" class="button-container"></div>
         <h2>Current Tab: <span id="currentTab"></span></h2>
-        <button onclick="settleUp()">Reken Af</button>
-        <button onclick="undoLastAction()">Undo Last Action</button>
     </div>
     <script src="app.js"></script>
 </body>
+
 </html>
