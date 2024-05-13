@@ -145,12 +145,22 @@ button2:hover {
     }
 
     #resetAllTabs {
-        width: 80%; /* Full width button for easier access on mobile */
-        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #fc2600; /* Tomato color for visibility */
+        color: white;
+        border: none;
+        cursor: pointer;
     }
 
-    #settleUp{width: 80%; /* Full width button for easier access on mobile */
-        margin-top: 10px;
+    #settleUp{
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #fc2600; /* Tomato color for visibility */
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
 
     }
 }
