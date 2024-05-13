@@ -170,3 +170,4 @@ function resetAllTabs() {
         alert("All tabs have been reset.");
     }
 }
+

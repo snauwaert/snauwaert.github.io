@@ -1,3 +1,4 @@
+/* Base styles are kept simple and applicable for mobile first */
 body, html {
     margin: 0;
     padding: 0;
@@ -7,6 +8,7 @@ body, html {
     width: 100%;
     height: 100%;
 }
+
 
 .top-bar {
     position: absolute;
@@ -21,6 +23,27 @@ body, html {
     gap: 10px;
 }
 
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px; /* Optimal for mobile taps */
+    background: none;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
 
 .screen {
     display: flex;
@@ -33,26 +56,57 @@ body, html {
     padding-top: 60px; /* Adjust padding to not overlap with the top bar */
 }
 
-.button-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+/* Responsive adjustments */
+@media (min-width: 600px) {
+    .button-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .drink-name, .drink-price {
+        font-size: 16px; /* Larger text for larger screens */
+    }
+
+    .top-bar {
+        padding: 10px;
+        background-color: #333;
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: start;
+        gap: 10px;
+    }
+
+    #resetAllTabs {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #FF6347; /* Tomato color for visibility */
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
 }
 
-button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background: none;
-    border: 1px solid white;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s, opacity 0.3s;
-}
+@media (max-width: 599px) {
+    button {
+        font-size: 14px; /* Slightly smaller to fit more content */
+        padding: 8px 15px;
+    }
 
-button:hover {
-    opacity: 0.8;
+    .top-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .total-due {
+        font-size: 18px; /* Larger for better readability on small screens */
+    }
+
+    #resetAllTabs {
+        width: 100%; /* Full width button for easier access on mobile */
+        margin-top: 10px;
+    }
 }
 
 
