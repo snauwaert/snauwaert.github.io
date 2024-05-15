@@ -1,25 +1,18 @@
 const people = ['Sven', 'Kris & Sucky', 'Luc & Anja', 'Dirk & Sabine', 'Tom Nuyts', 'Tom De Backer', 'Ann', 'Nico & Anne', 'Arno', 'Petrus', 'Matthias', 'Bjorn', 'Dave', 'Frank & Petra', 'Joris & Joyce', 'Sam', 'Extra1', 'Extra2'];
 const drinks = [
-    { name: 'Boerke', price: 5 },
-    { name: 'Pintje', price: 7 },
-    { name: 'Wijn', price: 10 },
-    { name: 'Hoegaarden', price: 2 },
-    { name: 'Tripel dAnvers', price: 8 },
-    { name: 'Ice Tea', price: 9 },
-    { name: 'Cola', price: 6 },
-    { name: 'Vodka', price: 7 },
-    { name: 'Gin', price: 8 },
-    { name: 'Champagne', price: 11 },
-    { name: 'Espresso', price: 3 },
-    { name: 'Iced Tea', price: 3 },
-    { name: 'Lemonade', price: 3 },
-    { name: 'Juice', price: 4 },
-    { name: 'Milkshake', price: 5 },
-    { name: 'Smoothie', price: 5 },
-    { name: 'Water', price: 1 },
-    { name: 'Cider', price: 7 },
-    { name: 'Sangria', price: 8 },
-    { name: 'Mojito', price: 9 }
+    { name: 'Boerke', price: 2.80 },
+    { name: 'Pintje 33cl', price: 3.00 },
+    { name: 'Hoegaarden', price: 2.90 },
+    { name: 'Tripel d\'Anvers', price: 4.50 },
+    { name: 'Chouffe', price: 4.20 },
+    { name: 'Duvel', price: 4.50 },
+    { name: 'Cava', price: 4.50 },
+    { name: 'IceTea', price: 2.90 },
+    { name: 'Water', price: 2.90 },
+    { name: 'Koffie', price: 2.90 },
+    { name: 'Aquarius', price: 3.50 },
+    { name: 'Wijn', price: 4.00 },
+    { name: 'Gemberthee', price: 5.00 }
 ];
 const tabs = JSON.parse(localStorage.getItem('tabs')) || {};
 const actionHistory = [];
