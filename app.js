@@ -11,6 +11,7 @@ const drinks = [
     { name: 'Water', price: 2.90 },
     { name: 'Koffie', price: 2.90 },
     { name: 'Aquarius', price: 3.50 },
+    { name: 'Cecemel', price: 3.50 },
     { name: 'Wijn', price: 4.00 },
     { name: 'Gemberthee', price: 5.00 }
 ];
