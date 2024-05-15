@@ -26,7 +26,7 @@ const actionHistory = [];
 
 people.forEach((person, index) => {
     const button = document.createElement('button');
-    button.textContent = person;
+    button.innerHTML = `<div class="person-name">${person}</div>`;
     button.classList.add(`color-${(index % 20) + 1}`);
     
     // Check if the person has an unsettled tab and add a class if so
@@ -120,7 +120,7 @@ function updateCurrentTab() {
         return `${drink} x${count}`;
     }).join(', ');
 
-    document.getElementById('currentTab').textContent = drinkDisplay + " | Total: €" + tabInfo.total;
+    document.getElementById('currentTab').textContent = drinkDisplay + " | Totaal: €" + tabInfo.total;
 }
 
 

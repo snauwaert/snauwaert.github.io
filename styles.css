@@ -91,7 +91,7 @@ button2:hover {
         gap: 10px;
     }
 
-    .drink-name, .drink-price {
+    .drink-name, .drink-price, .person-name {
         font-size: 16px; /* Larger text for larger screens */
     }
 
@@ -136,12 +136,14 @@ button2:hover {
     }
 
     .top-bar {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+        justify-content: start; /* or flex-start */
+        align-items: center;  /* Vertically center items in the top bar */
+        gap: 10px;
     }
 
     .total-due {
-        font-size: 18px; /* Larger for better readability on small screens */
+        font-size: 16px; /* Larger for better readability on small screens */
     }
 
     #resetAllTabs {
@@ -163,10 +165,10 @@ button2:hover {
     }
 
     }
-}
 
 
-.drink-name {
+
+.drink-name, .person-name {
     font-size: 16px;
     font-weight: bold;
 }
@@ -178,7 +180,7 @@ button2:hover {
 
 .total-due {
     margin: 20px;
-    font-size: 20px;
+    font-size: 16px;
     color: #FFD700; /* Gold color for emphasis */
 }
 
