@@ -1,4 +1,4 @@
-const people = ['Sven', 'Kris & Sucky', 'Luc & Anja', 'Dirk & Sabine', 'Tom Nuyts', 'Tom De Backer', 'Ann', 'Nico & Anne', 'Arno', 'Petrus', 'Matthias', 'Bjorn', 'Dave', 'Frank & Petra', 'Joris & Joyce', 'Sam', 'Extra1', 'Extra2'];
+const people = ['Sven', 'Kris & Sucky', 'Luc & Anja', 'Dirk & Sabine', 'Tom Nuyts', 'Tom De Backer', 'Ann', 'Nico & Anne', 'Arno', 'Petrus', 'Matthias', 'Bjorn en Caroline', 'Dave', 'Frank & Petra', 'Joris & Joyce', 'Sam'];
 const drinks = [
     { name: 'Boerke', price: 2.80 },
     { name: 'Pintje 33cl', price: 3.00 },
@@ -17,6 +17,7 @@ const drinks = [
 ];
 const tabs = JSON.parse(localStorage.getItem('tabs')) || {};
 const actionHistory = [];
+let settledAmount = 0;
 
 people.forEach((person, index) => {
     const button = document.createElement('button');
@@ -37,6 +38,7 @@ people.forEach((person, index) => {
 document.addEventListener('DOMContentLoaded', function () {
     // Initial call to display the total due when the page loads
     updateTotalDue();
+    updateRestDue();
 });
 
 function selectPerson(person) {
@@ -94,6 +96,7 @@ function addDrink(drink, price) {
     actionHistory.push({ type: 'add', person: person, drink: drink, price: price });
     updateCurrentTab();
     updateTotalDue();
+    updateRestDue();
     updateButtonStyles();  // Update button styles to reflect changes
 }
 
@@ -127,8 +130,13 @@ function goBack() {
 }
 
 function updateTotalDue() {
-    const totalDue = Object.values(tabs).reduce((acc, tab) => acc + tab.total, 0);
+    const totalDue = Object.values(tabs).reduce((acc, tab) => acc + tab.total, 0) + settledAmount;
     document.getElementById('totalDue').textContent = `Totaal bedrag: €${totalDue}`;
+}
+
+function updateRestDue() {
+    const restDue = Object.values(tabs).reduce((acc, tab) => acc + tab.total, 0);
+    document.getElementById('restDue').textContent = `Nog te betalen bedrag: €${restDue}`;
 }
 
 function undoLastAction() {
@@ -150,6 +158,7 @@ function undoLastAction() {
         case 'settle':
             // Assuming we saved the settled amount in actionHistory
             tabs[person].total = lastAction.amount;  // Restore the settled amount
+            settledAmount -= lastAction.amount;
             tabs[person] = lastAction.list            
             break;
         default:
@@ -159,6 +168,7 @@ function undoLastAction() {
     localStorage.setItem('tabs', JSON.stringify(tabs));
     updateTotalDue();
     updateCurrentTab();
+    updateRestDue();
     updateButtonStyles();
 }
 
@@ -169,11 +179,13 @@ function settleUp() {
     if (tabs[person]) {
         alert(`De rekening van ${person} bedroeg €${tabs[person].total} en is afgerekend.`);
         actionHistory.push({ type: 'settle', person: person, amount: tabs[person].total, list: tabs[person]});
+        settledAmount += tabs[person].total; 
         tabs[person] = { drinks: [], total: 0 };  // Reset the person's tab
         localStorage.setItem('tabs', JSON.stringify(tabs));
         
         updateCurrentTab();
         updateTotalDue();
+        updateRestDue();
         updateButtonStyles()
     } else {
         alert(`Geen openstaande rekening voor ${person}.`);
@@ -192,8 +204,10 @@ function resetAllTabs() {
         localStorage.setItem('tabs', JSON.stringify(tabs));
         // Clear any action history
         actionHistory.length = 0;
+        settledAmount = 0;
         // Update UI elements
         updateTotalDue();
+        updateRestDue();
         updateButtonStyles();
         if (document.getElementById('drinkScreen').style.display !== 'none') {
             updateCurrentTab();  // Only update if the drink screen is visible

@@ -146,6 +146,10 @@ button2:hover {
         font-size: 16px; /* Larger for better readability on small screens */
     }
 
+    .rest-due {
+        font-size: 16px; /* Larger for better readability on small screens */
+    }
+
     #resetAllTabs {
         padding: 10px 20px;
         font-size: 16px;
@@ -181,9 +185,14 @@ button2:hover {
 .total-due {
     margin: 20px;
     font-size: 16px;
-    color: #FFD700; /* Gold color for emphasis */
+    color: white; 
 }
 
+.rest-due {
+    margin: 20px;
+    font-size: 16px;
+    color: white; 
+}
 .unsettled-tab {
     border: 4px solid red;
 }
