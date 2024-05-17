@@ -1,4 +1,5 @@
-const people = ['Sven', 'Kris & Sucky', 'Luc & Anja', 'Dirk & Sabine', 'Tom Nuyts', 'Tom De Backer', 'Ann', 'Nico & Anne', 'Arno', 'Petrus', 'Matthias', 'Bjorn en Caroline', 'Dave', 'Frank & Petra', 'Joris & Joyce', 'Sam'];
+const people = ['Sven', 'Kris & Sucky', 'Luc & Anja', 'Dirk & Sabine', 'Tom Nuyts', 'Tom De Backer', 'Ann', 'Nico & Anne', 'Arno', 'Petrus', 
+                'Matthias', 'Bjorn en Caroline', 'Dave', 'Frank & Petra', 'Joris & Joyce', 'Sam'].sort();
 const drinks = [
     { name: 'Boerke', price: 280 },  // prices in cents
     { name: 'Pintje 33cl', price: 300 },
@@ -14,7 +15,7 @@ const drinks = [
     { name: 'Cecemel', price: 350 },
     { name: 'Wijn', price: 400 },
     { name: 'Gemberthee', price: 500 }
-];
+].sort((a, b) => a.name.localeCompare(b.name));
 const tabs = JSON.parse(localStorage.getItem('tabs')) || {};
 const actionHistory = [];
 let settledAmount = 0;
