@@ -1,19 +1,19 @@
 const people = ['Sven', 'Kris & Sucky', 'Luc & Anja', 'Dirk & Sabine', 'Tom Nuyts', 'Tom De Backer', 'Ann', 'Nico & Anne', 'Arno', 'Petrus', 'Matthias', 'Bjorn en Caroline', 'Dave', 'Frank & Petra', 'Joris & Joyce', 'Sam'];
 const drinks = [
-    { name: 'Boerke', price: 2.80 },
-    { name: 'Pintje 33cl', price: 3.00 },
-    { name: 'Hoegaarden', price: 2.90 },
-    { name: 'Tripel d\'Anvers', price: 4.50 },
-    { name: 'Chouffe', price: 4.20 },
-    { name: 'Duvel', price: 4.50 },
-    { name: 'Cava', price: 4.50 },
-    { name: 'IceTea', price: 2.90 },
-    { name: 'Water', price: 2.90 },
-    { name: 'Koffie', price: 2.90 },
-    { name: 'Aquarius', price: 3.50 },
-    { name: 'Cecemel', price: 3.50 },
-    { name: 'Wijn', price: 4.00 },
-    { name: 'Gemberthee', price: 5.00 }
+    { name: 'Boerke', price: 280 },  // prices in cents
+    { name: 'Pintje 33cl', price: 300 },
+    { name: 'Hoegaarden', price: 290 },
+    { name: 'Tripel d\'Anvers', price: 450 },
+    { name: 'Chouffe', price: 420 },
+    { name: 'Duvel', price: 450 },
+    { name: 'Cava', price: 450 },
+    { name: 'IceTea', price: 290 },
+    { name: 'Water', price: 290 },
+    { name: 'Koffie', price: 290 },
+    { name: 'Aquarius', price: 350 },
+    { name: 'Cecemel', price: 350 },
+    { name: 'Wijn', price: 400 },
+    { name: 'Gemberthee', price: 500 }
 ];
 const tabs = JSON.parse(localStorage.getItem('tabs')) || {};
 const actionHistory = [];
@@ -66,7 +66,8 @@ function updateDrinks() {
     drinksContainer.innerHTML = '';
     drinks.forEach((drink, index) => {
         const button = document.createElement('button');
-        button.innerHTML = `<div class="drink-name">${drink.name}</div><div class="drank prijs">€${drink.price}</div>`;
+        let displayed_price = (drink.price/100).toFixed(2)
+        button.innerHTML = `<div class="drink-name">${drink.name}</div><div class="drank prijs">€${displayed_price}</div>`;
         button.classList.add(`color-${(index % 20) + 1}`);
         button.onclick = () => addDrink(drink.name, drink.price);
         drinksContainer.appendChild(button);
@@ -117,7 +118,8 @@ function updateCurrentTab() {
         return `${drink} x${count}`;
     }).join(', ');
 
-    document.getElementById('currentTab').textContent = drinkDisplay + " | Totaal: €" + tabInfo.total;
+    let displayed_price = (tabInfo.total/100).toFixed(2)
+    document.getElementById('currentTab').textContent = drinkDisplay + " | Totaal: €" + displayed_price;
 }
 
 
@@ -131,12 +133,14 @@ function goBack() {
 
 function updateTotalDue() {
     const totalDue = Object.values(tabs).reduce((acc, tab) => acc + tab.total, 0) + settledAmount;
-    document.getElementById('totalDue').textContent = `Totaal bedrag: €${totalDue}`;
+    let displayed_price = (totalDue/100).toFixed(2)
+    document.getElementById('totalDue').textContent = `Totaal bedrag: €${displayed_price}`;
 }
 
 function updateRestDue() {
     const restDue = Object.values(tabs).reduce((acc, tab) => acc + tab.total, 0);
-    document.getElementById('restDue').textContent = `Nog te betalen bedrag: €${restDue}`;
+    let displayed_price = (restDue/100).toFixed(2)
+    document.getElementById('restDue').textContent = `Nog te betalen bedrag: €${displayed_price}`;
 }
 
 function undoLastAction() {
@@ -177,7 +181,8 @@ function undoLastAction() {
 function settleUp() {
     const person = document.getElementById('currentPerson').textContent;
     if (tabs[person]) {
-        alert(`De rekening van ${person} bedroeg €${tabs[person].total} en is afgerekend.`);
+        let displayed_price = (tabs[person].total/100).toFixed(2)
+        alert(`De rekening van ${person} bedroeg €${displayed_price} en is afgerekend.`);
         actionHistory.push({ type: 'settle', person: person, amount: tabs[person].total, list: tabs[person]});
         settledAmount += tabs[person].total; 
         tabs[person] = { drinks: [], total: 0 };  // Reset the person's tab
