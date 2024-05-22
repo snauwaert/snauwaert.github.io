@@ -124,13 +124,6 @@ function updateCurrentTab() {
 }
 
 
-function goBack() {
-    document.getElementById('drinkScreen').style.display = 'none';
-    document.getElementById('personScreen').style.display = 'flex';
-    // Hide the buttons when personScreen is active
-    document.getElementById('backButton').style.display = 'none';
-    document.getElementById('settleUpButton').style.display = 'none';
-}
 
 function updateTotalDue() {
     const totalDue = Object.values(tabs).reduce((acc, tab) => acc + tab.total, 0) + settledAmount;
