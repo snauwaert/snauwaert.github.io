@@ -1,43 +1,44 @@
-const people = ['Sven', 'Kris & Sucky', 'Luc & Anja', 'Dirk & Sabine', 'Tom Nuyts', 'Tom De Backer', 'Ann', 'Nico & Anne', 'Arno', 'Petrus', 
-                'Matthias', 'Bjorn en Caroline', 'Dave', 'Frank & Petra', 'Joris & Joyce', 'Sam'].sort();
-const drinks = [
-    { name: 'Boerke', price: 280 },  // prices in cents
-    { name: 'Pintje 33cl', price: 300 },
-    { name: 'Hoegaarden', price: 290 },
-    { name: 'Tripel d\'Anvers', price: 450 },
+var people = ['Ann', 'Arno', 'Bjorn en Caroline', 'Dave', 'Dirk & Sabine', 'Frank & Petra', 'Joris & Joyce', 'Kris & Sucky', 'Luc & Anja', 'Matthias', 'Nico & Anne', 'Petrus', 'Sam', 'Sven', 'Tom De Backer', 'Tom Nuyts'].sort();
+
+var drinks = [
+    { name: 'Aquarius', price: 350 },
+    { name: 'Boerke', price: 280 },
+    { name: 'Cava', price: 450 },
+    { name: 'Cecemel', price: 350 },
     { name: 'Chouffe', price: 420 },
     { name: 'Duvel', price: 450 },
-    { name: 'Cava', price: 450 },
+    { name: 'Gemberthee', price: 500 },
+    { name: 'Hoegaarden', price: 290 },
     { name: 'IceTea', price: 290 },
-    { name: 'Water', price: 290 },
     { name: 'Koffie', price: 290 },
-    { name: 'Aquarius', price: 350 },
-    { name: 'Cecemel', price: 350 },
-    { name: 'Wijn', price: 400 },
-    { name: 'Gemberthee', price: 500 }
-].sort((a, b) => a.name.localeCompare(b.name));
-const tabs = JSON.parse(localStorage.getItem('tabs')) || {};
-const actionHistory = [];
-let settledAmount = 0;
+    { name: 'Pintje 33cl', price: 300 },
+    { name: 'Tripel d\'Anvers', price: 450 },
+    { name: 'Water', price: 290 },
+    { name: 'Wijn', price: 400 }
+].sort(function(a, b) {
+    return a.name.localeCompare(b.name);
+});
 
-people.forEach((person, index) => {
-    const button = document.createElement('button');
-    button.innerHTML = `<div class="person-name">${person}</div>`;
-    button.classList.add(`color-${(index % 20) + 1}`);
+var tabs = JSON.parse(localStorage.getItem('tabs')) || {};
+var actionHistory = [];
+var settledAmount = 0;
+
+people.forEach(function(person, index) {
+    var button = document.createElement('button');
+    button.innerHTML = '<div class="person-name">' + person + '</div>';
+    button.classList.add('color-' + ((index % 20) + 1));
     
-    // Check if the person has an unsettled tab and add a class if so
     if (tabs[person] && tabs[person].total > 0) {
         button.classList.add('unsettled-tab');
     }
 
-    button.onclick = () => selectPerson(person);
+    button.onclick = function() {
+        selectPerson(person);
+    };
     document.getElementById('peopleContainer').appendChild(button);
 });
 
-
-// When initializing the tabs from localStorage or updating them, call updateTotalDue
 document.addEventListener('DOMContentLoaded', function () {
-    // Initial call to display the total due when the page loads
     updateTotalDue();
     updateRestDue();
 });
@@ -48,7 +49,6 @@ function selectPerson(person) {
     document.getElementById('drinkScreen').style.display = 'flex';
     updateDrinks();
     updateCurrentTab();
-    // Show the buttons when drinkScreen is active
     document.getElementById('backButton').style.display = 'inline-block';
     document.getElementById('settleUpButton').style.display = 'inline-block';
 }
@@ -56,29 +56,29 @@ function selectPerson(person) {
 function goBack() {
     document.getElementById('drinkScreen').style.display = 'none';
     document.getElementById('personScreen').style.display = 'flex';
-    // Hide the buttons when personScreen is active
     document.getElementById('backButton').style.display = 'none';
     document.getElementById('settleUpButton').style.display = 'none';
 }
 
-
 function updateDrinks() {
-    const drinksContainer = document.getElementById('drinksContainer');
+    var drinksContainer = document.getElementById('drinksContainer');
     drinksContainer.innerHTML = '';
-    drinks.forEach((drink, index) => {
-        const button = document.createElement('button');
-        let displayed_price = (drink.price/100).toFixed(2)
-        button.innerHTML = `<div class="drink-name">${drink.name}</div><div class="drank prijs">€${displayed_price}</div>`;
-        button.classList.add(`color-${(index % 20) + 1}`);
-        button.onclick = () => addDrink(drink.name, drink.price);
+    drinks.forEach(function(drink, index) {
+        var button = document.createElement('button');
+        var displayed_price = (drink.price / 100).toFixed(2);
+        button.innerHTML = '<div class="drink-name">' + drink.name + '</div><div class="drank prijs">€' + displayed_price + '</div>';
+        button.classList.add('color-' + ((index % 20) + 1));
+        button.onclick = function() {
+            addDrink(drink.name, drink.price);
+        };
         drinksContainer.appendChild(button);
     });
 }
 
 function updateButtonStyles() {
-    const buttons = document.querySelectorAll('#peopleContainer button');
-    buttons.forEach(button => {
-        const personName = button.textContent;
+    var buttons = document.querySelectorAll('#peopleContainer button');
+    buttons.forEach(function(button) {
+        var personName = button.textContent;
         if (tabs[personName] && tabs[personName].total > 0) {
             button.classList.add('unsettled-tab');
         } else {
@@ -88,7 +88,7 @@ function updateButtonStyles() {
 }
 
 function addDrink(drink, price) {
-    const person = document.getElementById('currentPerson').textContent;
+    var person = document.getElementById('currentPerson').textContent;
     if (!tabs[person]) {
         tabs[person] = { drinks: [], total: 0 };
     }
@@ -99,42 +99,37 @@ function addDrink(drink, price) {
     updateCurrentTab();
     updateTotalDue();
     updateRestDue();
-    updateButtonStyles();  // Update button styles to reflect changes
+    updateButtonStyles();
 }
 
-
-
 function updateCurrentTab() {
-    const person = document.getElementById('currentPerson').textContent;
-    const tabInfo = tabs[person] || { drinks: [], total: 0 };
-
-    // Create an object to count the drinks
-    const drinkCounts = tabInfo.drinks.reduce((acc, drink) => {
+    var person = document.getElementById('currentPerson').textContent;
+    var tabInfo = tabs[person] || { drinks: [], total: 0 };
+    var drinkCounts = tabInfo.drinks.reduce(function(acc, drink) {
         acc[drink] = (acc[drink] || 0) + 1;
         return acc;
     }, {});
-
-    // Format the display of each drink with its count
-    const drinkDisplay = Object.entries(drinkCounts).map(([drink, count]) => {
-        return `${drink} x${count}`;
+    var drinkDisplay = Object.keys(drinkCounts).map(function(drink) {
+        return drink + ' x' + drinkCounts[drink];
     }).join(', ');
-
-    let displayed_price = (tabInfo.total/100).toFixed(2)
+    var displayed_price = (tabInfo.total / 100).toFixed(2);
     document.getElementById('currentTab').textContent = drinkDisplay + " | Totaal: €" + displayed_price;
 }
 
-
-
 function updateTotalDue() {
-    const totalDue = Object.values(tabs).reduce((acc, tab) => acc + tab.total, 0) + settledAmount;
-    let displayed_price = (totalDue/100).toFixed(2)
-    document.getElementById('totalDue').textContent = `Totaal bedrag: €${displayed_price}`;
+    var totalDue = Object.values(tabs).reduce(function(acc, tab) {
+        return acc + tab.total;
+    }, 0) + settledAmount;
+    var displayed_price = (totalDue / 100).toFixed(2);
+    document.getElementById('totalDue').textContent = 'Totaal bedrag: €' + displayed_price;
 }
 
 function updateRestDue() {
-    const restDue = Object.values(tabs).reduce((acc, tab) => acc + tab.total, 0);
-    let displayed_price = (restDue/100).toFixed(2)
-    document.getElementById('restDue').textContent = `Nog te betalen bedrag: €${displayed_price}`;
+    var restDue = Object.values(tabs).reduce(function(acc, tab) {
+        return acc + tab.total;
+    }, 0);
+    var displayed_price = (restDue / 100).toFixed(2);
+    document.getElementById('restDue').textContent = 'Nog te betalen bedrag: €' + displayed_price;
 }
 
 function undoLastAction() {
@@ -142,22 +137,21 @@ function undoLastAction() {
         alert("No actions to undo.");
         return;
     }
-    const lastAction = actionHistory.pop();
-    const person = lastAction.person;
+    var lastAction = actionHistory.pop();
+    var person = lastAction.person;
 
     switch (lastAction.type) {
         case 'add':
-            const drinkList = tabs[person].drinks;
+            var drinkList = tabs[person].drinks;
             if (drinkList.length > 0) {
-                drinkList.pop();  // Remove last added drink
-                tabs[person].total -= lastAction.price;  // Subtract the price
+                drinkList.pop();
+                tabs[person].total -= lastAction.price;
             }
             break;
         case 'settle':
-            // Assuming we saved the settled amount in actionHistory
-            tabs[person].total = lastAction.amount;  // Restore the settled amount
+            tabs[person].total = lastAction.amount;
             settledAmount -= lastAction.amount;
-            tabs[person] = lastAction.list            
+            tabs[person] = lastAction.list;
             break;
         default:
             console.error("Unrecognized action type:", lastAction.type);
@@ -170,48 +164,38 @@ function undoLastAction() {
     updateButtonStyles();
 }
 
-
-
 function settleUp() {
-    const person = document.getElementById('currentPerson').textContent;
+    var person = document.getElementById('currentPerson').textContent;
     if (tabs[person]) {
-        let displayed_price = (tabs[person].total/100).toFixed(2)
-        alert(`De rekening van ${person} bedroeg €${displayed_price} en is afgerekend.`);
+        var displayed_price = (tabs[person].total / 100).toFixed(2);
+        alert('De rekening van ' + person + ' bedroeg €' + displayed_price + ' en is afgerekend.');
         actionHistory.push({ type: 'settle', person: person, amount: tabs[person].total, list: tabs[person]});
-        settledAmount += tabs[person].total; 
-        tabs[person] = { drinks: [], total: 0 };  // Reset the person's tab
+        settledAmount += tabs[person].total;
+        tabs[person] = { drinks: [], total: 0 };
         localStorage.setItem('tabs', JSON.stringify(tabs));
-        
         updateCurrentTab();
         updateTotalDue();
         updateRestDue();
-        updateButtonStyles()
+        updateButtonStyles();
     } else {
-        alert(`Geen openstaande rekening voor ${person}.`);
+        alert('Geen openstaande rekening voor ' + person);
     }
 }
 
-
-
 function resetAllTabs() {
     if (confirm("Ben je zeker dat je alle rekeningen wilt resetten. Dit kan niet ongedaan gemaakt worden.")) {
-        // Clear the tabs object
-        for (let person in tabs) {
+        for (var person in tabs) {
             tabs[person] = { drinks: [], total: 0 };
         }
-        // Update local storage
         localStorage.setItem('tabs', JSON.stringify(tabs));
-        // Clear any action history
         actionHistory.length = 0;
         settledAmount = 0;
-        // Update UI elements
         updateTotalDue();
         updateRestDue();
         updateButtonStyles();
         if (document.getElementById('drinkScreen').style.display !== 'none') {
-            updateCurrentTab();  // Only update if the drink screen is visible
+            updateCurrentTab();
         }
         alert("Alle rekeningen zijn gereset.");
     }
 }
-
