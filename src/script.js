@@ -121,7 +121,7 @@ function updateTotalDue() {
         return acc + tab.total;
     }, 0) + settledAmount;
     var displayed_price = (totalDue / 100).toFixed(2);
-    document.getElementById('totalDue').textContent = 'Totaal bedrag: €' + displayed_price;
+    document.getElementById('totalDue').textContent = 'Totaal: €' + displayed_price;
 }
 
 function updateRestDue() {
@@ -129,7 +129,7 @@ function updateRestDue() {
         return acc + tab.total;
     }, 0);
     var displayed_price = (restDue / 100).toFixed(2);
-    document.getElementById('restDue').textContent = 'Nog te betalen bedrag: €' + displayed_price;
+    document.getElementById('restDue').textContent = 'Nog te betalen: €' + displayed_price;
 }
 
 function undoLastAction() {
