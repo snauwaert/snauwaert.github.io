@@ -10,6 +10,8 @@ HTML
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script src="https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch/dist/fetch.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@ungap/polyfill@0.1.0/min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js"></script>
 </head>
 <body>
   <div id="topBar" class="top-bar">
@@ -20,7 +22,10 @@ HTML
     <h1>Selecteer persoon </h1>
     <div id="totalDue" class="total-due">Totaal verschuldigd €0</div>
     <div id="peopleContainer" class="button-container"></div>
-    <div id="restDue" class="rest-due">Nog te betalen €0</div>
+    <div id="restDue" class="rest-due">Nog te betalen €0
+
+          
+    </div>
     <button id="resetAllTabs" onclick="resetAllTabs()">Reset alle rekeningen</button>
   </div>
   <div id="drinkScreen" class="screen" style="display:none;">
