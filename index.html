@@ -33,7 +33,16 @@ HTML
     <div id="drinksContainer" class="button-container"></div>
     <h2>Huidige rekening: <span id="currentTab"></span></h2>
     <button id="settleUp" onclick="settleUp()">Reken af</button>
+    <button id="viewTabDetails" onclick="viewTabDetails()">Wijzig rekening</button>
   </div>
+  <div id="tabDetailsModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Rekening <span id="modalPersonName"></span></h2>
+        <div id="tabDetailsContainer"></div>
+    </div>
+  </div>
+
   <script src="dist/script.js" defer></script>
 </body>
 </html>

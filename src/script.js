@@ -199,3 +199,63 @@ function resetAllTabs() {
         alert("Alle rekeningen zijn gereset.");
     }
 }
+
+function viewTabDetails() {
+    var person = document.getElementById('currentPerson').textContent;
+    document.getElementById('modalPersonName').textContent = person;
+    updateTabDetails();
+    document.getElementById('tabDetailsModal').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('tabDetailsModal').style.display = 'none';
+}
+
+function updateTabDetails() {
+    var person = document.getElementById('currentPerson').textContent;
+    var tabInfo = tabs[person] || { drinks: [], total: 0 };
+    var tabDetailsContainer = document.getElementById('tabDetailsContainer');
+    tabDetailsContainer.innerHTML = '';
+
+    tabInfo.drinks.forEach(function(drink, index) {
+        var drinkItem = document.createElement('div');
+        drinkItem.textContent = drink;
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = function() {
+            deleteDrink(person, index);
+        };
+        drinkItem.appendChild(deleteButton);
+        tabDetailsContainer.appendChild(drinkItem);
+    });
+}
+
+function deleteDrink(person, drinkIndex) {
+    var drinkName = tabs[person].drinks[drinkIndex];
+    var drinkPrice = drinks.find(function(drink) {
+        return drink.name === drinkName;
+    }).price;
+
+    tabs[person].drinks.splice(drinkIndex, 1);
+    tabs[person].total -= drinkPrice;
+
+    if (tabs[person].total < 0) {
+        tabs[person].total = 0;
+    }
+
+    localStorage.setItem('tabs', JSON.stringify(tabs));
+    updateCurrentTab();
+    updateTotalDue();
+    updateRestDue();
+    updateButtonStyles();
+    updateTabDetails();
+}
+
+// Event listener to close the modal when clicking outside of it
+window.onclick = function(event) {
+    var modal = document.getElementById('tabDetailsModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
