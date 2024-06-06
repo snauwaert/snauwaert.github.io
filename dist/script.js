@@ -254,6 +254,7 @@ function updateTabDetails() {
     drinkItem.textContent = drink;
     var deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
+    deleteButton.classList.add('delete-button');
     deleteButton.onclick = function () {
       deleteDrink(person, index);
     };

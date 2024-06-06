@@ -123,7 +123,7 @@ button2:hover {
         cursor: pointer;
     }
 
-    #viewTabDetails{
+    .delete-button{
         padding: 10px 20px;
         font-size: 16px;
         background-color: #fc2600; /* Tomato color for visibility */
@@ -132,8 +132,17 @@ button2:hover {
         cursor: pointer;
     }
 
+    #viewTabDetails{
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #fceb00; /* Tomato color for visibility */
+        color: white;
+        border: none;
+        cursor: pointer;
     }
+
 }
+
 
 @media (max-width: 599px) {
     button {
@@ -179,7 +188,27 @@ button2:hover {
         cursor: pointer;
     }
 
+    .delete-button{
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #fc2600; /* Tomato color for visibility */
+        color: white;
+        border: none;
+        cursor: pointer;
     }
+
+
+    #viewTabDetails{
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #fceb00; /* Tomato color for visibility */
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+
+}
 
 
 
