@@ -135,7 +135,7 @@ button2:hover {
     #viewTabDetails{
         padding: 10px 20px;
         font-size: 16px;
-        background-color: #fceb00; /* Tomato color for visibility */
+        background-color: #fceb00;
         color: white;
         border: none;
         cursor: pointer;
@@ -201,7 +201,7 @@ button2:hover {
     #viewTabDetails{
         padding: 10px 20px;
         font-size: 16px;
-        background-color: #fceb00; /* Tomato color for visibility */
+        background-color: #fceb00;
         color: white;
         border: none;
         cursor: pointer;
