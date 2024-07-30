@@ -8,13 +8,13 @@ var drinks = [
     { name: 'Chouffe', price: 420 },
     { name: 'Duvel', price: 450 },
     { name: 'Gemberthee', price: 500 },
-    { name: 'Hoegaarden', price: 290 },
-    { name: 'IceTea', price: 290 },
-    { name: 'Koffie', price: 290 },
-    { name: 'Pintje 33cl', price: 300 },
+    { name: 'Hoegaarden', price: 300 },
+    { name: 'IceTea', price: 300 },
+    { name: 'Koffie', price: 300 },
+    { name: 'Pintje 33cl', price: 320 },
     { name: 'Tripel d\'Anvers', price: 450 },
-    { name: 'Water', price: 290 },
-    { name: 'Wijn', price: 450 },
+    { name: 'Water', price: 300 },
+    { name: 'Wijn', price: 500 },
     { name: 'Cava fles', price: 2500}
 ].sort(function(a, b) {
     return a.name.localeCompare(b.name);
