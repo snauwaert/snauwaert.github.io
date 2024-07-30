@@ -1,6 +1,6 @@
 "use strict";
 
-var people = ['Ann', 'Arno', 'Bjorn en Caroline', 'Dave', 'Dirk & Sabine', 'Frank & Petra', 'Joris & Joyce', 'Kris & Sucky', 'Luc & Anja', 'Matthias', 'Nico & Anne', 'Petrus', 'Sam', 'Sven', 'Tom De Backer', 'Tom Nuyts'].sort();
+var people = ['Ann', 'Arno', 'Bjorn & Caroline', 'Dave', 'Dirk & Sabine', 'Frank & Petra', 'Joris & Joyce', 'Kris & Sucky', 'Luc & Anja', 'Matthias', 'Nico & Anne', 'Petrus', 'Sam', 'Sven', 'Tom De Backer', 'Tom Nuyts'].sort();
 var drinks = [{
   name: 'Aquarius',
   price: 350
